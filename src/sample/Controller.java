@@ -3,11 +3,8 @@ package sample;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.w3c.dom.Text;
 
 import javax.swing.JFrame;
 import java.awt.FileDialog;

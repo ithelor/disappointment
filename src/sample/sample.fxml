@@ -34,14 +34,14 @@
                 <Color red="0.624" green="0.624" blue="0.624" />
             </textFill>
         </Label>
-      <Label alignment="CENTER" layoutX="159.0" layoutY="395.0" minWidth="60.0" prefHeight="27.0" prefWidth="110.0" style="&#10;" text="Transactions" textAlignment="CENTER" AnchorPane.bottomAnchor="15.400000000000023" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="330.6">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <textFill>
-            <Color red="0.624" green="0.624" blue="0.624" />
-         </textFill>
-      </Label>
-      <TextField fx:id="transactionsField" layoutX="269.0" layoutY="397.0" prefHeight="26.0" prefWidth="45.0" AnchorPane.bottomAnchor="14.200000000000045" AnchorPane.rightAnchor="285.4" />
+        <Label alignment="CENTER" layoutX="159.0" layoutY="395.0" minWidth="60.0" prefHeight="27.0" prefWidth="110.0" style="&#10;" text="Transactions" textAlignment="CENTER" AnchorPane.bottomAnchor="15.400000000000023" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="330.6">
+            <font>
+                <Font size="18.0" />
+            </font>
+            <textFill>
+                <Color red="0.624" green="0.624" blue="0.624" />
+            </textFill>
+        </Label>
+        <TextField fx:id="transactionsField" layoutX="269.0" layoutY="397.0" prefHeight="26.0" prefWidth="45.0" AnchorPane.bottomAnchor="14.200000000000045" AnchorPane.rightAnchor="285.4" />
     </AnchorPane>
 </VBox>
