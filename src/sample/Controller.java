@@ -5,9 +5,7 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import javax.swing.JFrame;
-import java.awt.FileDialog;
+import javafx.stage.FileChooser;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,14 +29,14 @@ public class Controller {
 
     private File getFile() {
 
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("HTML", "*.html")
+        );
 
-        FileDialog fd = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
-        fd.setDirectory(System.getProperty("user.dir") + "\\..");
-        fd.setVisible(true);
-
-        return new File(fd.getDirectory() + fd.getFile());
+        return new File(fileChooser.showOpenDialog(textArea.getScene().getWindow()).getAbsolutePath());
     }
 
     private void iterateFile(File file, ArrayList<String> stringArrayList) {
@@ -46,6 +44,9 @@ public class Controller {
         String str;
         BufferedReader in;
         boolean makeRecord = false;
+
+        if (!textArea.getText().trim().isEmpty())
+            textArea.clear();
 
         try {
 
