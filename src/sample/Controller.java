@@ -1,11 +1,13 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import org.w3c.dom.Text;
 
 import javax.swing.JFrame;
 import java.awt.FileDialog;
@@ -21,52 +23,48 @@ import java.util.regex.Pattern;
 
 public class Controller {
 
-    @FXML MenuBar menuBar;
-    @FXML MenuItem menuBtnOpen;
     @FXML TextArea textArea;
-    @FXML TextField resultField;
+    @FXML TextField sumField;
+    @FXML TextField transactionsField;
 
+    @FXML
+    private void closeApp() {
+        Platform.exit();
+    }
 
-    public void openFile() {
+    private File getFile() {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("A window");
+        JFrame frame = new JFrame();
 
         FileDialog fd = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
-
-        String currentDirectory = System.getProperty("user.dir");
-        System.out.println("Cur dir is " + currentDirectory);
-        fd.setDirectory(currentDirectory + "\\..");
+        fd.setDirectory(System.getProperty("user.dir") + "\\..");
         fd.setVisible(true);
-        String filename = fd.getFile();
-        System.out.println("You chose " + filename);
 
-        String path = fd.getDirectory() + fd.getFile();
-        File file = new File(path);
-        System.out.println(file);
+        return new File(fd.getDirectory() + fd.getFile());
+    }
+
+    private void iterateFile(File file, ArrayList<String> stringArrayList) {
 
         String str;
         BufferedReader in;
-        ArrayList<String> stringArrayList = new ArrayList<>();
-        boolean write = false;
+        boolean makeRecord = false;
 
         try {
+
             in = new BufferedReader(new FileReader(file));
             while ((str = in.readLine()) != null) {
 
-                if (write) {
+                if (makeRecord) {
                     if (!str.contains("<div>")) {
 
                         str = str.replaceAll("[^0-9,]", "");
                         str = str.replaceAll(",", ".");
 
-                        System.out.println(str);
-
                         textArea.appendText(str + "\n");
                         stringArrayList.add(str);
 
-                        write = false;
-
+                        makeRecord = false;
                     }
                 } else {
 
@@ -76,30 +74,28 @@ public class Controller {
                     Matcher m = r.matcher(str);
 
                     if (m.find())
-                        write = true;
-
+                        makeRecord = true;
                 }
             }
-        } catch (IOException ignored) {
-
-        }
-
-        System.out.println(stringArrayList);
-
-        double sum = 0;
-        int i;
-
-        for (i = 0; i < stringArrayList.size(); i++)
-            if (!stringArrayList.get(i).equals("")) {
-
-                System.out.println(stringArrayList.get(i));
-                sum += Double.parseDouble(stringArrayList.get(i));
-
-            }
-
-        System.out.println("Your disappointment: " + sum + ". Number of transactions: " + i);
-        resultField.setText(String.valueOf(sum));
-
+        } catch (IOException ignored) {}
     }
 
+    @FXML
+    private void openFile() {
+
+        File file = getFile();
+
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        iterateFile(file, stringArrayList);
+
+        int transactions;
+        double sum = 0;
+
+        for (transactions = 0; transactions < stringArrayList.size(); transactions++)
+            if (!stringArrayList.get(transactions).equals(""))
+                sum += Double.parseDouble(stringArrayList.get(transactions));
+
+        sumField.setText(String.valueOf(sum));
+        transactionsField.setText(String.valueOf(transactions));
+    }
 }

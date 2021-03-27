@@ -14,16 +14,16 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        Scene scene = new Scene(root, 600, 500);
-        stage.setMinWidth(700); stage.setMinHeight(600);
+        Scene scene = new Scene(root, 330, 500);
+        stage.setMinWidth(345); stage.setMinHeight(400);
+        stage.setMaxWidth(345); stage.setMaxHeight(680);
 
-        //stage.getIcons().add(new Image("/sample/icon.png"));
-        stage.setTitle("Your Life's Biggest Disappointment");
+        stage.getIcons().add(new Image("/sample/icon.png"));
+        stage.setTitle("SAPHP");
 
         stage.setScene(scene);
         stage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);
