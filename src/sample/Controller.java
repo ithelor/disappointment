@@ -73,7 +73,7 @@ public class Controller {
                     if (m.find())
                         makeRecord = true;
                 }
-            }
+            } in.close();
         } catch (IOException ignored) {}
     }
 

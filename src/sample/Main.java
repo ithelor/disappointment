@@ -1,16 +1,21 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        Platform.setImplicitExit(true);
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
@@ -23,6 +28,11 @@ public class Main extends Application {
 
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(e -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public static void main(String[] args) {

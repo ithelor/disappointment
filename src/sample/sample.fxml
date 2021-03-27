@@ -19,8 +19,8 @@
         </Menu>
     </MenuBar>
     <AnchorPane prefHeight="500.0" prefWidth="0.0" VBox.vgrow="ALWAYS">
-        <TextArea fx:id="textArea" layoutX="14.0" layoutY="27.0" prefHeight="360.0" prefWidth="300.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="286.0" AnchorPane.topAnchor="27.0" />
-        <TextField fx:id="sumField" layoutX="59.0" layoutY="395.0" prefHeight="26.0" prefWidth="100.0" AnchorPane.bottomAnchor="14.200000000000045" AnchorPane.leftAnchor="59.0" />
+        <TextArea editable="false" fx:id="textArea" layoutX="14.0" layoutY="27.0" prefHeight="360.0" prefWidth="300.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="286.0" AnchorPane.topAnchor="27.0" />
+        <TextField editable="false" fx:id="sumField" layoutX="59.0" layoutY="395.0" prefHeight="26.0" prefWidth="100.0" AnchorPane.bottomAnchor="14.200000000000045" AnchorPane.leftAnchor="59.0" />
         <Label alignment="CENTER" layoutX="14.0" minWidth="60.0" style="&#10;" text="Page content" textAlignment="CENTER" textFill="#9f9f9f" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="0.0">
             <font>
                 <Font size="18.0" />
@@ -42,6 +42,6 @@
                 <Color red="0.624" green="0.624" blue="0.624" />
             </textFill>
         </Label>
-        <TextField fx:id="transactionsField" layoutX="269.0" layoutY="397.0" prefHeight="26.0" prefWidth="45.0" AnchorPane.bottomAnchor="14.200000000000045" AnchorPane.rightAnchor="285.4" />
+        <TextField editable="false" fx:id="transactionsField" layoutX="269.0" layoutY="397.0" prefHeight="26.0" prefWidth="45.0" AnchorPane.bottomAnchor="14.200000000000045" AnchorPane.rightAnchor="285.4" />
     </AnchorPane>
 </VBox>
